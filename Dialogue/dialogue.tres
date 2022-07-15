@@ -1,0 +1,320 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ start_room
+
+I don't remember how i got here...
+Better turn on the light switch
+
+~ start_room_choice
+
+do change_bg(\"res://Textures/start_room.jpg\")
+- [color=blue]Check closet 
+	Something or someone Is holding the doors shut from the inside. Theyre stronger than me...
+	=> start_room_choice
+- [color=red]Check window
+	Its pitch black outside. Cant see a thing.
+	=> start_room_choice
+- [color=green]Leave
+
+~ hallway
+
+do change_bg(\"res://Textures/hallway.jpg\")
+- [color=blue]Check hallway 1
+	I dont want to go down there
+	=> hallway
+- [color=green]Check hallway 2
+	[color=red]\"Arch ya glad to see me?\"
+	- yes => hallway
+	- yes => hallway
+- [color=#008b8b]Check hallway 3
+	[color=#ff0f39]\"You arent welcome here\"
+	 => hallway
+- [color=red]Drinking fountain
+	The water coming out is A thick purple sludge.. I think its pulsating..
+	=> hallway
+- [color=purple]Leave area => END
+- Turn back => start_room_choice"
+errors = [  ]
+titles = {
+"hallway": "18",
+"start_room": "2",
+"start_room_choice": "7"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "start_room",
+"type": "title"
+},
+"10": {
+"next_id": "7",
+"parent_id": "8",
+"type": "goto"
+},
+"11": {
+"next_id": "12",
+"next_id_after": "18",
+"replacements": [  ],
+"text": "[color=red]Check window",
+"translation_key": "[color=red]Check window",
+"type": "response"
+},
+"12": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "13",
+"parent_id": "11",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Its pitch black outside. Cant see a thing.",
+"time": null,
+"translation_key": "Its pitch black outside. Cant see a thing.",
+"type": "dialogue"
+},
+"13": {
+"next_id": "7",
+"parent_id": "11",
+"type": "goto"
+},
+"14": {
+"next_id": "18",
+"next_id_after": "18",
+"replacements": [  ],
+"text": "[color=green]Leave",
+"translation_key": "[color=green]Leave",
+"type": "response"
+},
+"16": {
+"next_id": "18",
+"text": "hallway",
+"type": "title"
+},
+"18": {
+"mutation": {
+"expression": [ {
+"function": "change_bg",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "res://Textures/hallway.jpg"
+} ] ]
+} ]
+},
+"next_id": "19",
+"type": "mutation"
+},
+"19": {
+"next_id": "20",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "19", "22", "26", "29", "32", "33" ),
+"text": "[color=blue]Check hallway 1",
+"translation_key": "[color=blue]Check hallway 1",
+"type": "response"
+},
+"2": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I don't remember how i got here...",
+"time": null,
+"translation_key": "I don't remember how i got here...",
+"type": "dialogue"
+},
+"20": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "21",
+"parent_id": "19",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I dont want to go down there",
+"time": null,
+"translation_key": "I dont want to go down there",
+"type": "dialogue"
+},
+"21": {
+"next_id": "18",
+"parent_id": "19",
+"type": "goto"
+},
+"22": {
+"next_id": "23",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "[color=green]Check hallway 2",
+"translation_key": "[color=green]Check hallway 2",
+"type": "response"
+},
+"23": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "24",
+"parent_id": "22",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[color=red]\"Arch ya glad to see me?\"",
+"time": null,
+"translation_key": "[color=red]\"Arch ya glad to see me?\"",
+"type": "dialogue"
+},
+"24": {
+"next_id": "18",
+"next_id_after": "end",
+"parent_id": "22",
+"replacements": [  ],
+"responses": PoolStringArray( "24", "25" ),
+"text": "yes",
+"translation_key": "yes",
+"type": "response"
+},
+"25": {
+"next_id": "18",
+"next_id_after": "end",
+"parent_id": "22",
+"replacements": [  ],
+"text": "yes",
+"translation_key": "yes",
+"type": "response"
+},
+"26": {
+"next_id": "27",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "[color=#008b8b]Check hallway 3",
+"translation_key": "[color=#008b8b]Check hallway 3",
+"type": "response"
+},
+"27": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "28",
+"parent_id": "26",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[color=#ff0f39]\"You arent welcome here\"",
+"time": null,
+"translation_key": "[color=#ff0f39]\"You arent welcome here\"",
+"type": "dialogue"
+},
+"28": {
+"next_id": "18",
+"parent_id": "26",
+"type": "goto"
+},
+"29": {
+"next_id": "30",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "[color=red]Drinking fountain",
+"translation_key": "[color=red]Drinking fountain",
+"type": "response"
+},
+"3": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Better turn on the light switch",
+"time": null,
+"translation_key": "Better turn on the light switch",
+"type": "dialogue"
+},
+"30": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "31",
+"parent_id": "29",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "The water coming out is A thick purple sludge.. I think its pulsating..",
+"time": null,
+"translation_key": "The water coming out is A thick purple sludge.. I think its pulsating..",
+"type": "dialogue"
+},
+"31": {
+"next_id": "18",
+"parent_id": "29",
+"type": "goto"
+},
+"32": {
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "[color=purple]Leave area",
+"translation_key": "[color=purple]Leave area",
+"type": "response"
+},
+"33": {
+"next_id": "7",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Turn back",
+"translation_key": "Turn back",
+"type": "response"
+},
+"5": {
+"next_id": "7",
+"text": "start_room_choice",
+"type": "title"
+},
+"7": {
+"mutation": {
+"expression": [ {
+"function": "change_bg",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "res://Textures/start_room.jpg"
+} ] ]
+} ]
+},
+"next_id": "8",
+"type": "mutation"
+},
+"8": {
+"next_id": "9",
+"next_id_after": "18",
+"replacements": [  ],
+"responses": PoolStringArray( "8", "11", "14" ),
+"text": "[color=blue]Check closet",
+"translation_key": "[color=blue]Check closet",
+"type": "response"
+},
+"9": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "10",
+"parent_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Something or someone Is holding the doors shut from the inside. Theyre stronger than me...",
+"time": null,
+"translation_key": "Something or someone Is holding the doors shut from the inside. Theyre stronger than me...",
+"type": "dialogue"
+}
+}
